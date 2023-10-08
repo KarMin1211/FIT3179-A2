@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 300,
+    "title": "Top 10 Trending YouTuber Channels",
+    "data": {
+        "url":"Global YouTube Statistics.csv",
+        "format": {"type": "csv"}
+    },
+    "transform": [
+        {
+          "window": [{
+            "op": "rank",
+            "as": "rank"
+          }],
+          "sort": [{ "field": "subscribers", "order": "descending" }]
+        }, {
+          "filter": "datum.rank <= 10"
+        }
+      ],
+    "encoding": {
+        "x":{
+            "field":"subscribers",
+            "type": "quantitative",
+            "title":"Number of Subscriber"
+        },
+        "y":{
+            "field":"Youtuber",
+            "type": "nominal",
+            "title":"YouTube Channels",
+            "sort": {
+                "op": "max",
+                "field":"subscribers",
+                "order":"descending"
+            }
+    }
+},
+    "layer": [
+        {
+            "mark":{
+                "type": "bar",
+                "height": 2,
+                "color": "#333333"
+            }
+        },
+        {
+            "mark":{
+                "type": "circle",
+                "size": 400,
+                "color": "red",
+                "opacity": 1
+
+            }
+        }
+    ]   
+}

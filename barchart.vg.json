@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 300,
+    "title": "Distribution of Trending YouTube Channels by Category",
+    "data": {
+        "url": "category.csv",
+        "format":{"type": "csv"}
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Category", "type": "nominal", "axis": {"labelAngle": -90},
+        "sort": "-y"
+        },
+      "y": {"field": "Count", "type": "quantitative"},
+      "color":{"value": " #FF0000"}
+    }
+  }

@@ -1,0 +1,25 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 320,
+    "data": {"url": "Global YouTube Statistics.csv"},
+    "title": "Distribution of Subscribers Across Categories",
+    "transform": [
+        {
+          "filter": "datum.category != ''"
+        }
+      ],
+    "mark": {
+      "type": "boxplot"
+    },
+    "encoding": {
+      "y": {"field": "category", "type": "nominal"},
+      "color": {"value": "#FF0000"},
+      "x": {
+        "field": "subscribers",
+        "type": "quantitative",
+        "scale": {"zero": false}
+      }
+    }
+  }
+  

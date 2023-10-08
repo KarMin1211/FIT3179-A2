@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 320,
+    "data": {"url": "salary.csv"},
+    "title": "Distribution of Salary Across Categories",
+    "encoding": {
+      "x": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Average Annual Income",
+        "scale": {"domain":[100000,25000000]}
+      },
+      "y": {
+        "field": "category",
+        "type": "nominal",
+        "title": "category"
+      }
+    },
+    "layer": [
+        {
+            "mark": "line",
+            "encoding": {
+              "detail": {
+                "field": "category",
+                "type": "nominal"
+              },
+              "color": {"value": "#db646f"}
+            }
+          },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "attribute",
+            "type": "ordinal",
+            "scale": {
+              "domain": ["Lowest_earning", "Highest_earning"],
+              "range": ["#c4302b", "#FF0000"]
+            },
+            "title": "Annual Income",
+            "legend": {
+              "orient": "none",
+              "legendX": 200,
+              "legendY": 40
+            }
+          },
+          "size": {"value": 100},
+          "opacity": {"value": 1},
+          "tooltip": [
+            {"field": "category", "type": "nominal"},
+            {"field": "value", "type": "quantitative", "format": ","}
+            ]
+        }
+      }
+    ]
+  }
+  
