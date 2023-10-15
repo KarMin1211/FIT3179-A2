@@ -146,7 +146,8 @@
             },
             "tooltip":[
                 {"field":"Youtuber","type": "nominal", "title":"YouTuber"},
-                {"field":"subscribers", "type": "quantitative", "title":"Number of Subscribers"}
+                {"field":"category", "type":"nominal","title": "Category"},
+                {"field":"subscribers", "type": "quantitative", "title":"Number of Subscribers", "format":","}
             ]
          }
         }

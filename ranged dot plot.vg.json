@@ -4,7 +4,7 @@
     "height": 398,
     "view": {"strokeOpacity": 0},
     "data": {"url": "salary.csv"},
-    "title": {"text":"Distribution of Salary Across Categories",
+    "title": {"text":"Distribution of Salary Across Top 10 Categories",
     "fontSize":15,
     "font":"Roboto"},
     "transform": [
