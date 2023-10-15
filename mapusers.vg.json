@@ -6,7 +6,7 @@
     "height": 380,
     "view": {"strokeOpacity": 0},
     "projection": {"type": "equalEarth"},
-    "title": {"text":"Top countries with the most YouTube users 2023", "fontSize":18,
+    "title": {"text":"Top 20 Countries with the Most YouTube Users 2023", "fontSize":18,
     "font":"Roboto"},
     "layer": [
       {
