@@ -1,31 +1,37 @@
 body {
-    background-color: #FF0000;
+    background-color: #FF6961;
 }
 
 h1 {
     font-weight: 900;
+    padding-bottom: 0 ;
 }
 
 h2 {
-    font-size: xx-large;
-    font-weight: 650;
-    padding-left: 40px;
+    font-size: 22pt;
+    font-weight: 300;
+    /* padding-left: 40px; */
     margin-bottom: -10px;
+    padding-bottom: 20px;
+    font-family: 'Dela Gothic One', sans-serif;
 }
 
 #maintitle {
-    font-weight: 900;
+    font-weight: 580;
     font-size: 36pt;
     text-align: center;
     vertical-align: middle;
+    font-family: 'Dela Gothic One', sans-serif;
 }
 
 #subtitle {
-    font-weight:500;
+    font-weight: 580;
     font-size: 18pt;
     text-align: center;
     vertical-align: top;
     padding-bottom: 40px;
+    padding-top: -20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #smalltitle {
@@ -34,14 +40,26 @@ h2 {
 p {
     font-size: 13pt;
     font-weight: 300;
-    padding-left: 40px;
-    padding-right: 40px;
+    /* padding-left: 40px; */
+    /* padding-right: 40px; */
+    margin: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    line-height: 20pt;
 }
 
-.sidedescription {
-    padding: 70px;
+.rightdesc {
+    padding-left: 30px;
 }
+
+.leftdesc {
+    padding-right: 30px;
+}
+/* .sidedescription {
+    padding: 70px;
+} */
 
 #barchartdesc {
     padding-left: 40px;
@@ -49,16 +67,19 @@ p {
 }
 
 .extrainfo{
-    font-size: 9pt;
+    font-size: 11pt;
+    padding-top: 0px;
+    color: #373737
 }
 
 
 .page {
     width: 1000px;
     background-color: white;
-    margin: auto;
+    margin: 0px auto 20px;
     padding: 50px;
     padding-top: 35px;
+    border-radius: 10px;
 }
 
 .vis-container {
@@ -75,7 +96,7 @@ p {
 }
 
 #youtubelogo {
-    width: 120px;
+    width: 130px;
     height: 80px;
     display: block;
     margin-left: auto;
@@ -83,9 +104,18 @@ p {
 }
 
 #youtuberslogo {
-    width: 250px;
-    height: 150px;
+    width: 350;
+    height: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
+.section {
+    margin: 5px 0px;
+}
+
+.bold_text {
+    font-weight: bold;
+}
+

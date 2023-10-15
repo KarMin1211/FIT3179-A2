@@ -6,7 +6,7 @@
     "height": 380,
     "view": {"strokeOpacity": 0},
     "projection": {"type": "equalEarth"},
-    "title": {"text":"Number of Trending YouTubers in Countries", "fontSize":18,
+    "title": {"text":"Top countries with the most YouTube users 2023", "fontSize":18,
     "font":"Roboto"},
     "layer": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "data": {
-          "url": "country data.csv",
+          "url": "user country data.csv",
           "format": {"type": "csv"}
         },
         "mark": {"type": "circle", "stroke": "black"},
@@ -40,28 +40,29 @@
           "longitude": {"field": "Longitude", "type": "quantitative"},
           "latitude": {"field": "Latitude", "type": "quantitative"},
           "size": {
-            "field": "Number of Youtuber",
+            "field": "Number of Users",
             "type": "quantitative",
-            "title": "Number of Trending YouTubers",
+            "title": "Number of YouTube users",
             "scale": {
               "type": "threshold",
-              "domain": [20, 70, 300],
-              "range": [70, 270, 450, 850]
+              "domain": [100000000, 200000000, 400000000],
+              "range": [50, 250, 400, 800]
               },
               "legend": {"format": ".1s",
-                         "titleFontWeight":"normal",
-                         "titleFont":"Roboto",
-                         "labelFont": "Roboto",
-                         "orient": "bottom",
-                        "labelFontSize": 11,
-                      "titleFontSize": 12}
+              "titleFontWeight":"normal",
+              "titleFont":"Roboto",
+              "labelFont": "Roboto",
+              "orient": "bottom",
+             "labelFontSize": 11,
+           "titleFontSize": 12}
           },
           "color": {
-            "field": "Number of Youtuber", 
+            "field": "Number of Users", 
             "type": "quantitative",
-            "title": "Number of Trending YouTubers",
+            "title": "Number of YouTube users",
+            "opacity": 1,
             "scale": {
-              "domain": [0, 350],
+              "domain": [30000000, 470000000],
               "range": ["#005AB5", "#C85200"]
             },
             "legend": {"format": ".1s",
@@ -74,7 +75,7 @@
           },
             "tooltip": [
               {"field": "Country", "type": "nominal"},
-              {"field": "Number of Youtuber", "type": "quantitative", "format": ",", "title": "Number of YouTubers"}]
+              {"field": "Number of Users", "type": "quantitative", "format": ",", "title": "Number of YouTube users"}]
         }
       }
     ]

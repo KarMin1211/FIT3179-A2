@@ -1,33 +1,73 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "padding":{"left": -90},
-    "width": "container",
+    "width": 600,
     "height": 400,
-    "title": "Does number of uploads affects subscribers and views?",
+    "view": {"strokeOpacity": 0},
+    "title": {"text":"Does number of uploads affects subscribers and views?","fontSize":18,
+    "font":"Roboto"},
     "data": {
     "url": "Global YouTube Statistics.csv",
     "format": {"type": "csv"}
-    },      
+    },
+    "params": [{
+        "name": "Uploads_Above",
+        "value": 0,
+        "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 300000,
+        "step": 50,
+        "name": "Select minimum uploads: "
+        }
+        },
+        {
+            "name": "Subscribers_Above",
+            "value": 0,
+            "bind": {
+            "input": "range",
+            "min": 12200000,
+            "max": 244000000,
+            "step": 100000,
+            "name": "Select minimum subscribers: "
+            }
+            },
+            {
+                "name": "Views_Above",
+                "value": 0,
+                "bind": {
+                "input": "range",
+                "min": 2000,
+                "max": 227000000000,
+                "step": 10000000,
+                "name": "Select minimum views: "
+                }
+                }],      
     "transform": [{
         "filter": "datum.uploads > 0"
       },
       {
         "filter": "datum.category != ''"
-      }
+      },
+      {"filter": "datum.uploads > Uploads_Above"},
+      {"filter": "datum.subscribers > Subscribers_Above"},
+      {"filter": "datum['video views']> Views_Above"}
     ],
     "encoding": {
     "x": {
     "field": "uploads",
     "type": "quantitative",
     "title": "Number of Video Uploads",
-    "axis": {"tickCount": 6},
+    "axis": {"tickCount": 6, "gridOpacity": 0.7, "labelFontSize":11, "titleFontSize":12, 
+    "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"},
     "scale": {"type": "log", "domain": [1, 1000000]}
     },
     "y": {
     "field": "subscribers",
     "type": "quantitative",
     "title": "Number of Subscribers",
-    "axis": {"tickCount": 2},
+    "axis": {"tickCount": 2, "gridOpacity": 0.7, "labelFontSize":11, "titleFontSize":12, 
+    "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"},
     "scale": {"type": "log", "domain": [10000000, 1000000000]}
     }
     },
@@ -49,11 +89,67 @@
                         "domain": [40000000000, 80000000000, 120000000000, 150000000000, 200000000000],
                         "range": [30, 100, 200, 300, 400, 600]
                         },
-                        "legend": {"format": ".1s"}
+                        "legend": {"format": ".1s", 
+                        "title":"Video Views", 
+                        "titleFontWeight":"normal",
+                        "titleFont":"Roboto",
+                        "labelFont": "Roboto",
+                        "orient": "right",
+                       "labelFontSize": 11,
+                     "titleFontSize": 12}
                     },
             "color": {
                     "field": "category",
-                    "type": "nominal"      
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Entertainment",
+                            "Music",
+                            "People & Blogs",
+                            "Gaming",
+                            "Comedy",
+                            "Education",
+                            "Film & Animation",
+                            "Howto & Style",
+                            "News & Politics",
+                            "Science & Technology",
+                            "Shows",
+                            "Sports",
+                            "Pets & Animals",
+                            "Autos & Vehicles",
+                            "Movies",
+                            "Nonprofits & Activism",
+                            "Trailers"
+                        ],
+                        "range":[
+                          "#800000",
+                          "#e6194B",
+                          "#8A496B",
+                          "#f032e6",
+                          "#fabed4",
+                          "#f58231", 
+                          "#EAAA00",
+                          "#ffe119",
+                          "#469990",
+                          "#000075",
+                          "#42d4f4",
+                          "#4363d8",
+                          "#aaffc3",
+                          "#dcbeff",
+                          "#9A6324",
+                          "#a9a9a9",
+                          "#000000"
+                        ]
+                    },
+                    "legend":{
+                        "titleFontWeight":"normal",
+                        "titleFont":"Roboto",
+                        "labelFont": "Roboto",
+                        "orient": "right",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "title": "Category"
+                    }       
                     },
             "opacity": {
                     "condition": {"selection": "category_highlight", "value": 0.8},
@@ -71,18 +167,19 @@
             "mark": {
                 "type": "text",
                 "align": "right",
-                "baseline": "middle",
+                "baseline": "top",
                 "dx": -13,
                 "dy": -10,
-                "fontSize": 11.5,
-                "fontStyle": "italic"
+                "fontSize": 11,
+                "fontStyle": "italic",
+                "font":"Roboto"
                 },
                 "encoding": {
                     "text": {"field": "Youtuber", "type": "nominal"},
                     "color": {"value": "black"},
                     "opacity": {
                         "condition":{
-                            "test": "datum['uploads'] > 500 && datum['subscribers'] > 80000000 && datum['video views'] > 80000000000",
+                            "test": "datum['subscribers'] > 100000000 && datum['video views'] > 80000000000 && datum['Youtuber'] != '��� Kids Diana Show' && datum['Youtuber'] != 'Cocomelon - Nursery Rhymes'",
                             "value": 1
                         },
                         "value":0
@@ -94,9 +191,35 @@
                         {"field": "video views", "type": "quantitative", "format": ","}
                         ]
                 }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "dx": 0,
+                "dy": -15,
+                "fontSize": 11,
+                "fontStyle": "italic"
+                },
+                "encoding": {
+                    "text": {"field": "Youtuber", "type": "nominal"},
+                    "color": {"value": "black"},
+                    "opacity": {
+                        "condition":{
+                            "test": "datum['Youtuber'] == '��� Kids Diana Show' || datum['Youtuber'] == 'Cocomelon - Nursery Rhymes'",
+                            "value": 1
+                        },
+                        "value":0
+                    },
+                    "tooltip": [
+                        {"field": "category", "type": "nominal", "title":"Category"},
+                        {"field": "uploads", "type": "quantitative", "format": ",", "title": "Video Uploads"},
+                        {"field": "subscribers", "type": "quantitative", "format": ",", "title": "Subscribers"},
+                        {"field": "video views", "type": "quantitative", "format": ",", "title":"Video Views"}
+                        ]
+                }
         }
-
-         
     ]
 }
     

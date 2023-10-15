@@ -1,38 +1,69 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
-    "height": 300,
-    "title": "Top 10 Trending YouTuber Channels",
+    "height": 320,
+    "view": {"strokeOpacity": 0},
+    "title": {"text":"Top Trending YouTube Channels","fontSize":18,
+    "font":"Roboto"},
     "data": {
         "url":"Global YouTube Statistics.csv",
         "format": {"type": "csv"}
     },
     "transform": [
-        {
-          "window": [{
-            "op": "rank",
-            "as": "rank"
-          }],
-          "sort": [{ "field": "subscribers", "order": "descending" }]
-        }, {
-          "filter": "datum.rank <= 10"
+         {
+          "filter": "datum.rank <= 5 || datum.rank <= number_selection"
         }
       ],
+      "params": [
+        {
+        "name": "number_selection",
+        "bind": {
+        "input": "select",
+        "options": [
+            5,
+            10,
+            15
+        ],
+        "labels":[
+            "Top 5",
+            "Top 10",
+            "Top 15"
+        ],
+        "name": "Please select a range: "
+        }
+        }
+        ],
     "encoding": {
         "x":{
             "field":"subscribers",
             "type": "quantitative",
-            "title":"Number of Subscriber"
+            "title":"Number of Subscriber",
+            "axis":{"gridOpacity": 0.7, "labelFontSize":11, "titleFontSize":12, 
+            "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"}
         },
         "y":{
             "field":"Youtuber",
             "type": "nominal",
             "title":"YouTube Channels",
-            "sort": {
-                "op": "max",
-                "field":"subscribers",
-                "order":"descending"
-            }
+            "axis":{"labelFontSize":11, "titleFontSize":12, 
+            "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto", "title":"Category"},
+            "sort": [
+                "T-Series",
+                "YouTube Movies",
+                "MrBeast",
+                "Cocomelon - Nursery Rhymes",
+                "SET India",
+                "Music",
+                "��� Kids Diana Show",
+                "PewDiePie",
+                "Like Nastya",
+                "Vlad and Niki",
+                "Zee Music Company",
+                "WWE",
+                "Gaming",
+                "BLACKPINK",
+                "Goldmines"
+            ]
     }
 },
     "layer": [
@@ -41,16 +72,83 @@
                 "type": "bar",
                 "height": 2,
                 "color": "#333333"
+            },
+            "encoding": {
+                "tooltip":[
+                    {"field":"Youtuber","type": "nominal", "title":"YouTuber"},
+                    {"field":"subscribers", "type": "quantitative", "title":"Number of Subscribers"}
+                ]
             }
         },
-        {
+        {   "selection": {
+            "category_highlight": {
+            "type": "multi",
+            "fields": ["category"],
+            "bind": "legend"
+            }
+            },  
             "mark":{
                 "type": "circle",
-                "size": 400,
-                "color": "red",
-                "opacity": 1
-
-            }
+                "size": 400
+            },
+         "encoding": {
+            "color":{
+                "field": "category",
+                "type": "nominal",
+                "scale": {
+                "domain": [
+                    "Entertainment",
+                    "Music",
+                    "People & Blogs",
+                    "Gaming",
+                    "Comedy",
+                    "Education",
+                    "Film & Animation",
+                    "Howto & Style",
+                    "News & Politics",
+                    "Science & Technology",
+                    "Shows",
+                    "Sports",
+                    "Pets & Animals",
+                    "Autos & Vehicles",
+                    "Movies",
+                    "Nonprofits & Activism",
+                    "Trailers"
+                ],
+                "range":[
+                  "#800000",
+                  "#e6194B",
+                  "#8A496B",
+                  "#f032e6",
+                  "#fabed4",
+                  "#f58231", 
+                  "#EAAA00",
+                  "#ffe119",
+                  "#469990",
+                  "#000075",
+                  "#42d4f4",
+                  "#4363d8",
+                  "#aaffc3",
+                  "#dcbeff",
+                  "#9A6324",
+                  "#a9a9a9",
+                  "#000000"
+                ]
+            },
+            "legend": {"orient": "right", "title":"Category", "titleFontWeight":"normal",
+            "titleFont":"Roboto",
+            "labelFont": "Roboto",
+            "labelFontSize": 11}
+            },
+            "opacity": {
+                "condition": {"selection": "category_highlight", "value": 1},
+                "value": 0.2
+            },
+            "tooltip":[
+                {"field":"Youtuber","type": "nominal", "title":"YouTuber"},
+                {"field":"subscribers", "type": "quantitative", "title":"Number of Subscribers"}
+            ]
+         }
         }
     ]   
 }

@@ -1,25 +1,73 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
-    "height": 320,
+    "height": 350,
+    "view": {"strokeOpacity": 0},
     "data": {"url": "Global YouTube Statistics.csv"},
-    "title": "Distribution of Subscribers Across Categories",
+    "title": {"text":"Distribution of Subscribers Across Top 10 Categories", 
+    "fontSize":15,
+    "font":"Roboto"},
     "transform": [
-        {
-          "filter": "datum.category != ''"
-        }
-      ],
-    "mark": {
-      "type": "boxplot"
-    },
+      {"filter": {"field": "category", "oneOf": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"]}}
+    ],
     "encoding": {
-      "y": {"field": "category", "type": "nominal"},
-      "color": {"value": "#FF0000"},
-      "x": {
+      "x": {"field": "category", "type": "nominal", "axis": {"labelAngle": -45, "labelFontSize":11, "titleFontSize":12, 
+      "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto", "title":"Category"},
+      "sort": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"]},
+      "y": {
         "field": "subscribers",
         "type": "quantitative",
-        "scale": {"zero": false}
+        "scale": {"zero": false},
+        "axis": {"title":"Subscribers","labelFontSize":11, "titleFontSize":12, 
+        "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"}
       }
-    }
+    },
+    "layer":[
+      {
+        "mark":{
+          "type":"circle"
+      },
+      "encoding": {
+        "color":{
+          "condition":{"test": "datum.subscribers > 160000000", "value": "darkblue"},
+          "value": "brown"
+        },
+        "opacity":{
+          "condition":{"test": "datum.subscribers > 160000000", "value": 1},
+          "value": 0.5
+        }
+      }
+    },
+      {
+        "mark": {
+          "type": "boxplot",
+          "extent":"min-max",
+          "size": 25,
+          "median": {"color":"black", "minBandSize": 20}
+        },
+        "encoding": {
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"],
+              "range": [
+                "#800000",
+                "#e6194B",
+                "#8A496B",
+                "#f032e6",
+                "#fabed4",
+                "#f58231", 
+                "#EAAA00",
+                "#ffe119",
+                "#469990",
+                "#000075"
+              ]
+            },
+            "legend":null
+          }
+        }
+      }
+    ]
   }
   

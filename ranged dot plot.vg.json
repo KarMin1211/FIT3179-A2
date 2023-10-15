@@ -1,58 +1,84 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
-    "height": 320,
+    "height": 398,
+    "view": {"strokeOpacity": 0},
     "data": {"url": "salary.csv"},
-    "title": "Distribution of Salary Across Categories",
+    "title": {"text":"Distribution of Salary Across Categories",
+    "fontSize":15,
+    "font":"Roboto"},
+    "transform": [
+      {"filter": {"field": "category", "oneOf": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"]}}
+    ],
     "encoding": {
       "x": {
         "field": "value",
         "type": "quantitative",
         "title": "Average Annual Income",
-        "scale": {"domain":[100000,25000000]}
+        "scale": {"domain":[100000,9000000]},
+        "axis":{"gridOpacity": 0.7, "labelFontSize":11, "titleFontSize":12, 
+        "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"}
       },
       "y": {
         "field": "category",
         "type": "nominal",
-        "title": "category"
+        "title": "category",
+        "axis":{"labelFontSize":11, "titleFontSize":12,
+        "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto", "title":"Category"},
+        "sort": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"]
       }
     },
     "layer": [
         {
             "mark": "line",
             "encoding": {
-              "detail": {
+              "color":{
                 "field": "category",
-                "type": "nominal"
-              },
-              "color": {"value": "#db646f"}
+                "type": "nominal",
+                "scale": {
+                  "domain": ["Entertainment", "Music", "People & Blogs", "Gaming", "Comedy", "Education", "Film & Animation", "Howto & Style", "News & Politics", "Science & Technology"],
+                  "range": [
+                    "#800000",
+                    "#e6194B",
+                    "#8A496B",
+                    "#f032e6",
+                    "#fabed4",
+                    "#f58231", 
+                    "#EAAA00",
+                    "#ffe119",
+                    "#469990",
+                    "#000075"
+                  ]
+                },
+                "legend":null
+              }
             }
-          },
+        },
       {
         "mark": {
           "type": "point",
           "filled": true
         },
         "encoding": {
-          "color": {
+          "color": {"value": "brown"},
+          "shape": {
             "field": "attribute",
             "type": "ordinal",
-            "scale": {
-              "domain": ["Lowest_earning", "Highest_earning"],
-              "range": ["#c4302b", "#FF0000"]
-            },
-            "title": "Annual Income",
+            "title": null,
             "legend": {
-              "orient": "none",
-              "legendX": 200,
-              "legendY": 40
+              "orient": "top",
+              "titleFontWeight":"normal",
+              "titleFont":"Roboto",
+              "labelFont": "Roboto",
+              "labelExpr": "{'Highest_earning': 'Highest Annual Income', 'Lowest_earning': 'Lowest Annual Income'}[datum.label]",
+              "labelFontSize":11
             }
           },
           "size": {"value": 100},
           "opacity": {"value": 1},
           "tooltip": [
-            {"field": "category", "type": "nominal"},
-            {"field": "value", "type": "quantitative", "format": ","}
+            {"field": "category", "type": "nominal", "title": "Category"},
+            {"field": "value", "type": "quantitative", "format": ",", "title": "Income"}
             ]
         }
       }

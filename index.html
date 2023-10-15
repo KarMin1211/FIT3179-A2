@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-    <script src="map.js"></script>
+    <script src="embedding.js"></script>
     <title>FIT3179 Week 10 Homework</title>
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
@@ -16,190 +16,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="style.css" media="all">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <!-- <div class="page"> -->
+    
     <div class="page">
-      
       <div class="pure-g-title">
-        <div class="pure-u-1-1">
-          <img src="images\youtube logo 1.jpg" id="youtubelogo"/>
-        </div>
-      </div>
+         <div class="pure-u-1-1">
+           <img src="images\youtube logo 1.jpg" id="youtubelogo"/>
+         </div>
+       </div>
+ 
+         <div class="pure-g-title">
+             <div class="pure-u-1-1">
+               <h1 id="maintitle">YouTube Trend Analysis</h1>
+               <p id="subtitle" style="padding-top: 0px;">A guidance for YouTubers looking to launch and grow their channels.</p>
+             </div>
+         </div>
 
-        <div class="pure-g-title">
-            <div class="pure-u-1-1">
-              <h1 id="maintitle">YouTube Trend Analysis</h1>
-              <p id="subtitle">A guidance for YouTubers looking to launch and grow their channels.</p>
-            </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <h2>Content Category</h2>
-          </div>
-        </div>
-
-        <div class="pure-g">
+         <div class="pure-g">
           <div class="pure-u-1-2">
-          <p>  Before embarking on your YouTube journey, it's crucial to determine 
-                the primary content category for your channel. In this section, 
+          <p class="leftdesc" style="margin-top: 10px;">Being a <span class="bold_text" style="color: darkred;font-size: 15pt;">YouTuber</span> 
+            seems like a fun and profitable profession. 
+            You create videos on topics that you like and make money off of them. 
+            However, becoming an <span class="bold_text">established YouTuber</span> is no easy feat. Behind every famous vlogger 
+            is a long journey of <span class="bold_text">hard work</span>. There are investments you need to make,
+            processes you need to follow, and more before you 
           </p>
           </div>
 
           <div class="pure-u-1-2">
-            <p>
-              we'll explore several trending categories that can serve as sources 
-              of inspiration for your channel's content</h3>
+            <p class="rightdesc" style="margin-top: 10px;">
+              even create your first video. 
+              This dashboard provides <span class="bold_text">basic analyses</span> of Global YouTube
+              statistics for <span class="bold_text">2023</span>. It aims to offer valuable guidance for beginners, 
+              helping you understand the <span class="bold_text">key considerations</span> when 
+              <span class="bold_text">launching your own channel</span>.
             </p>
           </div>
         </div>  
+    </div>
 
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <div id="barchart" class="vis-container"></div>
+    <div class="page">
+      <div class="pure-g">
+            <div class="pure-u-1-1">
+              <h2>Content Category</h2>
+            </div>
           </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-            <p> The most popular YouTube category among the 
-              top channels is “Entertainment”, followed by “Music” and “Film & Animation”. 
+  
+          <div class="pure-g">
+            <div class="pure-u-1-2">
+            <p class="leftdesc">Before embarking on your YouTube journey, it's crucial to determine 
+              the <span class="bold_text"> primary content category</span> for your channel. 
+              Your content category defines what your channel will be all about and who your 
+              <span class="bold_text">target audience</span> is. 
+              Your choice can be guided by what you're passionate about, what you're knowledgeable in, or what you 
+              believe has an audience 
             </p>
             </div>
   
             <div class="pure-u-1-2">
-              <p>
-                Categories such as “News & Politics”, 
-                “Sports”, and “People & Blogs” also have significant representation.</h3>
+              <p class="rightdesc">
+                 demand. It's beneficial to explore <span class="bold_text">trending content category</span> on YouTube. 
+                 These are areas where audiences are <span class="bold_text">actively engaging</span>, and there's potential for growth. 
+                 In this section, we'll delve into a variety of trending <span class="bold_text">trending content category</span>
+                 that can offer you valuable insights into where there's a demand for content.
               </p>
             </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-              <div id="boxplot" class="vis-container"></div>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed.</p>
-            </div>
+          </div>  
   
-            <div class="pure-u-1-2">
-              <div id="rangedplot" class="vis-container"></div>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed.</p>
-            </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <h2>Top Trending Youtubers</h2>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-3">
-          <p>  Another valuable source of inspiration is to reference successful 
-            YouTubers who are currently trending, providing you with ideas and insights 
-          </p>
-          </div>
-
-          <div class="pure-u-1-3">
-            <p>
-              on what they do and how they achieve their success. In this section, we 
-              will summarize some of the top-performing YouTuber channels.
-            </p>
-          </div>
-
-          <div class="pure-u-1-3">
-            <img src="images\youtuberslogo.png" id="youtuberslogo"/>
-          </div>
-        </div>  
-
-        <div class="pure-g">
-          <div class="pure-u-2-3">
-            <div id="lollipop" class="vis-container"></div>
-          </div>
-
-          <div class="pure-u-1-3">
-            <p class="sidedescription"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed.</p>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <h2>Location</h2>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-          <p>  Another crucial factor to consider when establishing your YouTube channel is your audience niche. 
-              One essential aspect 
-          </p>
-          </div>
-
-          <div class="pure-u-1-2">
-            <p>
-              of defining your niche is determining the specific country or region that your 
-              content will be tailored to.
-            </p>
-          </div>
-        </div>  
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <div id=map class="vis-container"></div>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-              <div id="boxplot" class="vis-container"></div>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed.</p>
-            </div>
   
-            <div class="pure-u-1-2">
-              <div id="rangedplot" class="vis-container"></div>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed.</p>
+          <div class="pure-g">
+            <div class="pure-u-1-1">
+              <div id="barchart" class="vis-container"></div>
+              <p class="extrainfo">Click on the bars to highlight a specific category.</p>
             </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <h2 style="padding-bottom: 25px;">Important Factors</h2>
           </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-1">
-            <div id="bubbleplot" class="vis-container"></div>
-          </div>
-        </div>
-
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-              <div id="boxplot" class="vis-container"></div>
-              <p> Lastly, this section provides a summary of the key factors that contribute to the success of your 
-                  YouTube channel. The bubbleplot visualizes the relationship between the number of video
-                  uploads and the total number of subscribers and video views for YouTube channels. As expected, 
-                  channels with more subscribers tend to have more video views.</p>
-            </div>
   
+          <div class="pure-g">
             <div class="pure-u-1-2">
-              <div id="rangedplot" class="vis-container"></div>
-              <p> In contrast, the number of uploads and subscribers shows a 
-                very weak correlation. This suggests that content quality could be more 
-                critical than sheer quantity. The bubbleplot also highlighted several 
-                YouTube channels that performs greatly based on number of views and 
-                subscribers.</p>
-            </div>
+              <p class="leftdesc">The YouTube landscape is diverse, with a wide range of content <span class="category_text">categories</span>. 
+                Among the top performing channels, <span style="color: maroon; font-weight: bold;">"Entertainment"</span> stands out as the 
+                most popular <span class="category_text">category</span>, followed closely by <span style="color: #e6194B; font-weight: bold;">"Music"</span>, 
+                <span style="font-weight: bold; color: #8A496B;">"People & Blogs"</span>, <span style="font-weight: bold; color: #f032e6;">"Gaming"</span> and 
+                <span style="font-weight: bold; color: #fabed4; -webkit-text-stroke: 0.5px grey;">"Comedy"</span>. These <span class="category_text">categories</span> tend to have substantial 
+              </p>
+              </div>
+    
+              <div class="pure-u-1-2">
+                <p class="rightdesc">
+                  following and a large number of viewers, performing better than other contents. It's also worth noting that other <span class="category_text">categories</span> like 
+                  <span style="font-weight: bold; color: #f58231;">"Education"</span>, <span style="font-weight: bold; color: #EAAA00;">"Film & Animation"</span>, <span style="font-weight: bold; color: #ffe119;">"Howto & Style"</span>, 
+                  <span style="font-weight: bold; color: #469990;">"News & Politics"</span>, and <span style="font-weight: bold; color: #000075;">"Science & Technology"</span>,
+                  also have a significant presence on the platform.
+                </p>
+              </div>
+          </div>
+  
+          <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="boxplot" class="vis-container" style="padding-right: 30px;"></div>
+                <p class="leftdesc" style="margin-top: 10px;">Except for a few of remarkable YouTubers who owns a large number of subscribers (highlighted in blue), most YouTubers in the popular 
+                  <span class="category_text">categories</span> fall within the subscriber range of <span class="bold_text">12,000,000 to 120,000,000</span>. 
+                  However, there are exceptions within <span style="font-weight: bold; color: #fabed4; -webkit-text-stroke: 0.5px grey;">"Comedy"</span> and <span style="font-weight: bold; color: #000075;">"Science & Technology"</span>
+                  where channels have relatively <span class="bold_text">fewer subscribers</span>. Although there are many trending YouTube channels that produce  <span style="font-weight: bold; color: #fabed4; -webkit-text-stroke: 0.5px grey;">"Comedy"</span> content, 
+                  individual channel performance in terms of subscriber counts is relatively modest. This suggests that while  <span style="font-weight: bold; color: #fabed4; -webkit-text-stroke: 0.5px grey;">"Comedy"</span> content is trending, 
+                  it might <span class="bold_text">not always translate into massive subscriber</span> numbers for individual creators.</p>
+              </div>
+    
+              <div class="pure-u-1-2">
+                <div id="rangedplot" class="vis-container" style="padding-left: 20px; padding-right: 30px;"></div>
+                <p class="rightdesc" style="margin-top: 10px;">Likewise, when it comes to income, the <span class="bold_text">earnings</span> of YouTubers in specific content 
+                  categories do <span class="bold_text">not always align</span> with the <span class="bold_text">popularity of the content</span> 
+                  or the <span class="bold_text">number of subscribers</span>. 
+                  Notably, categories such as <span style="font-weight: bold; color: #f032e6;">"Gaming"</span>, 
+                  <span style="font-weight: bold; color: #ffe119;">"Howto & Style"</span>, and 
+                  <span style="font-weight: bold; color: #000075;">"Science & Technology"</span> tend to, on 
+                  average, generate <span class="bold_text">less income</span> compared to YouTubers creating content in other categories. 
+                  This discrepancy may be due to the <span class="bold_text">varying monetization opportunities</span> available in each content category. 
+                  For example, <span style="font-weight: bold; color: #ffe119;">"Howto & Style"</span> content with high audience engagement, such as product 
+                  reviews or lifestyle content, may attract more sponsorships and affiliate marketing opportunities.</p>
+              </div>
+          </div>
+    </div> 
+
+    <div class="page">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Top Trending Youtubers</h2>
         </div>
       </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+        <p class="leftdesc">Looking at <span class="bold_text">sucessful YouTubers</span> who are currently trending can offer you valuable 
+          insights into what works on the platform. By studying their content and understanding their path to 
+          success, you can <span class="bold_text">get inspiration</span> and <span class="bold_text">learn</span> from their strategies. 
+          This involves examining the <span class="bold_text">types of videos</span> they
+        </p>
+        </div>
+
+        <div class="pure-u-1-2">
+          <p class="rightdesc">
+            create, their <span class="bold_text">content schedule</span>, 
+            their <span class="bold_text">engagement</span> with the audience, 
+            and how they've built their 
+            <span class="bold_text">brand</span> on YouTube. In this section, we'll provide a summary of some of the 
+            <span class="bold_text">top-performing YouTube channels</span>.
+          </p>
+        </div>
+      </div>  
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div id="lollipop" class="vis-container"></div>
+          <p class="extrainfo">Click on the legend to highlight a specific category</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-2", style="margin: auto;">
+        <p class="leftdesc">The <span>best performing</span> YouTube channel is 
+          <span style="font-weight: bold; font-size: 15pt;">T-Series</span>, 
+          India's largest <span style="color: #e6194B; font-weight: bold;">"Music"</span> company. Additionally, 
+          three out of the top 15 YouTube channels create <span style="color: #e6194B; font-weight: bold;">musical</span> content, 
+          highlighting the immense popularity of this <span class="category_text">category</span>. It is also worth noting that three 
+          of the top 15 channels are dedicated to <span style="font-weight: bold; color: #8A496B;">"People & Blogs"</span>.
+        </p>
+        </div>
+
+        <div class="pure-u-1-2">
+          <img src="images\youtberslogo2.png" id="youtuberslogo" class="rightdesc"/>
+        </div>
+      </div>  
+    </div>
+
+    <div class="page">
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Location</h2>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+        <p class="leftdesc">Another vital factor to keep in mind when setting up your YouTube channel 
+          is your <span class="bold_text">target audience niche</span>. An integral component of 
+          defining your niche is identifying the particular 
+        </p>
+        </div>
+
+        <div class="pure-u-1-2">
+          <p class="rightdesc">
+            <span class="bold_text">country</span> or region for which your content will be customized. 
+            This geographical focus can significantly impact the <span class="bold_text">content</span> 
+            you create and the <span class="bold_text">audience</span> you attract.
+          </p>
+        </div>
+      </div> 
+      
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div id=mapusers class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+        <p class="leftdesc">The map provided above offers summary of the 
+          <span class="bold_text">top 20 countries</span> with 
+          the highest number of <span class="bold_text">YouTube users</span>. 
+          Understanding this data is crucial because the number of users directly influences 
+          the potential <span class="bold_text">size of your audience</span>. 
+        </p>
+        </div>
+
+        <div class="pure-u-1-2">
+          <p class="rightdesc">
+            Notably, <span style="color: blue; font-weight: bold;">India</span> 
+            leads the way with the most <span class="bold_text">YouTube users</span>, 
+            boasting an impressive <span class="bold_text">467,000,000</span> users, followed closely by the 
+            <span style="color: #c85200; font-weight: bold;">United State</span>.
+          </p>
+        </div>
+      </div> 
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div id=map class="vis-container"></div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+            <div id="boxplot" class="vis-container"></div>
+            <p class="leftdesc">The map above illustrates the distribution of <span class="bold_text">trending YouTubers</span> in each country. 
+              The <span style="color: brown; font-weight: bold;">United State</span> leads with the highest number of trending YouTubers, 
+              followed closely by <span style="color: blue; font-weight: bold;">India</span>. 
+              This pattern is in alignment with the number of YouTube users in each country, indicating the <span class="bold_text">significance of</span></p>
+          </div>
+
+          <div class="pure-u-1-2">
+            <div id="rangedplot" class="vis-container"></div>
+            <p class="rightdesc"><span class="bold_text">audience</span> size. However, <span class="bold_text">language diversity</span> also plays a crucial role. 
+              One possible explanation for the <span style="color: brown; font-weight: bold;">United State</span> having more popular 
+              YouTubers is that English content can be understood by a broader international 
+              audience compared to content in specific regional languages like <span style="color: blue; font-weight: bold;">Tamil</span> .
+
+            </p>
+          </div>
+      </div>
+    </div>
+
+    <div class="page" style="margin-bottom: 0;">
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Important Factors</h2>
+        </div>
+      </div>
+  
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div id="bubbleplot" class="vis-container"></div>
+          <p class="extrainfo">Click on the legend to highlight a specific category</p>
+        </div>
+      </div>
+  
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+            <p class="leftdesc"> Lastly, this section provides a summary of the <span class="bold_text">key factors</span>
+                that contribute to the <span class="bold_text">success</span> of your 
+                YouTube channel. The bubbleplot visualizes the relationship between the number of video
+                <span class="bold_text">uploads</span> and the total number of <span class="bold_text">subscribers</span> and video 
+                <span class="bold_text">views</span> for YouTube channels. As expected, 
+                channels with more <span class="bold_text">subscribers</span> tend to have 
+                more video <span class="bold_text">views</span>. In contrast,</p>
+          </div>
+  
+          <div class="pure-u-1-2">
+            <p class="rightdesc">  the number of <span class="bold_text">uploads</span> 
+              and <span class="bold_text">subscribers</span> shows a 
+              very weak correlation. This suggests that <span class="bold_text">content quality</span> could be 
+              <span class="bold_text">more critical</span> than sheer quantity. The bubbleplot also highlighted several 
+              YouTube channels that performs greatly based on number of views and 
+              subscribers.</p>
+          </div>
+      </div>
+    </div>
+
+      <!-- </div> -->
 
 </body>
 

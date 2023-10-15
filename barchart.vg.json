@@ -2,18 +2,109 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
     "height": 300,
-    "title": "Distribution of Trending YouTube Channels by Category",
+    "title": {"text":"Distribution of Trending YouTube Channels by Content Category",
+              "fontSize":18,
+              "font":"Roboto"
+  },
+    "view": {"strokeOpacity": 0},
     "data": {
         "url": "category.csv",
         "format":{"type": "csv"}
     },
-    "mark": "bar",
+    "params": [
+      {
+        "name": "highlight",
+        "select": {"type": "point", "on": "mouseover"}
+      },
+      {"name": "select", "select": "point"}
+    ],
+    "mark": {
+      "type": "bar",
+      "stroke": "black",
+      "cursor": "pointer"
+    },
     "encoding": {
       "x": {
-        "field": "Category", "type": "nominal", "axis": {"labelAngle": -90},
+        "field": "Category", "type": "nominal", 
+        "axis": {"labelAngle": -45, "labelFontSize":11, "titleFontSize":12, 
+        "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"},
         "sort": "-y"
         },
-      "y": {"field": "Count", "type": "quantitative"},
-      "color":{"value": " #FF0000"}
+      "y": {"field": "Count", "type": "quantitative",  
+      "axis":{"gridOpacity": 0.7, "labelFontSize":11, "titleFontSize":12, 
+      "titleFontWeight":200, "labelFont":"Roboto", "titleFont":"Roboto"}},
+      "color":{
+        "field": "Category",
+        "type": "nominal",
+        "scale": {
+        "domain": [
+            "Entertainment",
+            "Music",
+            "People & Blogs",
+            "Gaming",
+            "Comedy",
+            "Education",
+            "Film & Animation",
+            "Howto & Style",
+            "News & Politics",
+            "Science & Technology",
+            "Shows",
+            "Sports",
+            "Pets & Animals",
+            "Autos & Vehicles",
+            "Movies",
+            "Nonprofits & Activism",
+            "Trailers"
+        ],
+        "range":[
+          "#800000",
+          "#e6194B",
+          "#8A496B",
+          "#f032e6",
+          "#fabed4",
+          "#f58231", 
+          "#EAAA00",
+          "#ffe119",
+          "#469990",
+          "#000075",
+          "#42d4f4",
+          "#4363d8",
+          "#aaffc3",
+          "#dcbeff",
+          "#9A6324",
+          "#a9a9a9",
+          "#000000"
+        ]
+    },
+    "legend":null
+  },
+  "tooltip": [
+    {"field": "Category", "type": "nominal"},
+    {"field": "Count", "type": "quantitative"}
+  ],
+  "fillOpacity": {
+    "condition": {"param": "select", "value": 1},
+    "value": 0.3
+  },
+  "strokeWidth": {
+    "condition": [
+      {
+        "param": "select",
+        "empty": false,
+        "value": 2
+      },
+      {
+        "param": "highlight",
+        "empty": false,
+        "value": 1
+      }
+    ],
+    "value": 0
+  }
+    },
+    "config": {
+      "scale": {
+        "bandPaddingInner": 0.2
+      }
     }
   }
